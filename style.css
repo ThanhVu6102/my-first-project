@@ -1,14 +1,164 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin-top: 100px;
+/* ===== CSS Reset tối giản (PDF 04 – A Clean Slate) ===== */
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+img,video,canvas,iframe{max-width:100%;display:block}
+button,input,select,textarea{font:inherit}
+
+/* ===== Variables + theming (PDF 04 – SASS variables → CSS custom props) ===== */
+:root{
+  --bg:#f8fafc; --surface:#ffffff; --text:#0f172a; --muted:#64748b;
+  --primary:#2563eb; --primary-600:#1d4ed8; --border:#e2e8f0;
+  --radius:14px; --shadow:0 8px 30px rgba(2,6,23,.08);
+  --font:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+}
+[data-theme="dark"]{
+  --bg:#0b1220; --surface:#111c33; --text:#e2e8f0; --muted:#94a3b8;
+  --primary:#60a5fa; --primary-600:#3b82f6; --border:#1e293b;
+  --shadow:0 8px 30px rgba(0,0,0,.4);
 }
 
-h1 {
-    color: #333;
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg); color:var(--text);
+  line-height:1.6;
+  transition:background .3s,color .3s; /* PDF 04 – Transitions */
+}
+.container{max-width:1080px;margin:0 auto;padding:0 1.25rem}
+.section{padding:3.5rem 0}
+.section.alt{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+h1{font-size:clamp(1.8rem,4vw,2.8rem);line-height:1.15;margin:.5rem 0 1rem}
+h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:.25rem}
+h3{margin-bottom:.5rem}
+.muted{color:var(--muted)} .small{font-size:.9rem}
+.eyebrow{color:var(--primary);font-weight:700;text-transform:uppercase;font-size:.8rem;letter-spacing:.06em}
+.hl{background:linear-gradient(120deg,#bfdbfe,#ddd6fe);padding:0 .35rem;border-radius:6px} /* PDF04 gradient/color */
+[data-theme="dark"] .hl{background:linear-gradient(120deg,#1e3a8a,#4c1d95)}
+.lead{font-size:1.1rem;color:var(--muted);max-width:60ch}
+
+/* Skip link – a11y / graceful degradation */
+.skip-link{position:absolute;left:-999px;background:var(--primary);color:#fff;padding:.5rem 1rem;border-radius:0 0 8px 0}
+.skip-link:focus{left:0;z-index:99}
+
+/* ===== Header: sticky + positioning (PDF 04) ===== */
+.site-header{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--border)}
+.header-inner{display:flex;align-items:center;gap:1rem;padding:.7rem 1.25rem}
+.logo{font-weight:700;text-decoration:none;color:var(--text);font-size:1.15rem;margin-right:auto}
+.logo-mark{background:var(--primary);color:#fff;border-radius:8px;padding:.1rem .45rem;margin-right:.35rem}
+.main-nav{display:flex;gap:.25rem}
+.nav-link{padding:.5rem .8rem;border-radius:10px;text-decoration:none;color:var(--muted)}
+.nav-link:hover,.nav-link:focus-visible{background:var(--border);color:var(--text)} /* pseudo-class PDF04 */
+.nav-link.active{color:var(--primary);font-weight:700}
+.nav-cta{border:1px solid var(--primary);color:var(--primary)}
+.header-actions{display:flex;gap:.5rem;align-items:center}
+.icon-btn{border:1px solid var(--border);background:var(--surface);border-radius:10px;padding:.45rem .7rem;cursor:pointer}
+.menu-btn{display:none}
+
+/* Buttons + pseudo-element demo */
+.btn{display:inline-block;border:1px solid var(--border);background:var(--surface);color:var(--text);
+  padding:.65rem 1.1rem;border-radius:12px;cursor:pointer;text-decoration:none;transition:transform .15s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow)}
+.btn-primary{background:var(--primary);border-color:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-600)}
+.btn-outline{background:transparent}
+.btn-small{padding:.4rem .8rem;font-size:.9rem}
+.text-link{color:var(--primary);text-decoration:none;font-weight:600}
+.text-link::after{content:"";display:block;height:2px;background:var(--primary);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+.text-link:hover::after{transform:scaleX(1)}
+.row{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+
+/* Hero */
+.hero{padding:3.5rem 0 2.5rem;background:
+  radial-gradient(600px 300px at 15% 10%,rgba(37,99,235,.14),transparent),
+  radial-gradient(500px 260px at 90% 20%,rgba(139,92,246,.14),transparent)}
+.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:2rem;align-items:center}
+.hero-cta{display:flex;gap:.7rem;margin:1.2rem 0;flex-wrap:wrap}
+.hero-stats{display:flex;gap:1.5rem;list-style:none}
+.hero-stats dt{font-weight:800;font-size:1.2rem}
+.hero-stats dd{color:var(--muted);font-size:.9rem}
+.code-mock{background:#0f172a;color:#e2e8f0;border-radius:var(--radius);padding:1rem;box-shadow:var(--shadow);animation:float 6s ease-in-out infinite}
+.code-mock pre{overflow:auto;font-size:.85rem;margin-top:.5rem}
+.c1{color:#f87171}.hint{color:var(--muted);font-size:.85rem;margin-top:.6rem}
+.hero-card{color:var(--text)}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+
+/* Cards: Flex/Grid + Box model (PDF 04) */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.5rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;box-shadow:var(--shadow)}
+.card ul{margin:.6rem 0 .8rem 1.1rem}
+.card.wide{grid-column:1/-1}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1.5rem}
+.two-col>div{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem}
+.link-list{margin-left:1.1rem} .link-list li{margin:.3rem 0}
+a:visited{color:inherit} a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
+/* Table */
+.table-wrap{overflow-x:auto;margin-top:1rem;border:1px solid var(--border);border-radius:var(--radius);background:var(--surface)}
+table{width:100%;border-collapse:collapse;min-width:640px}
+caption{padding:.8rem;font-weight:700}
+th,td{padding:.75rem 1rem;border-top:1px solid var(--border);text-align:left}
+thead th{background:rgba(37,99,235,.08)}
+
+/* Media */
+.media-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1rem}
+figure{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.8rem}
+figcaption{color:var(--muted);font-size:.9rem;margin-top:.5rem}
+figure img{border-radius:10px;aspect-ratio:16/9;object-fit:cover;width:100%}
+#demoCanvas{width:100%;height:auto;background:linear-gradient(135deg,#dbeafe,#fae8ff);border-radius:10px;border:1px dashed var(--primary)}
+.iframe-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:1rem}
+.iframe-ratio{position:relative;padding-top:56.25%;border-radius:10px;overflow:hidden}
+.iframe-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Lab */
+.lab-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1rem}
+.dnd{display:flex;gap:.7rem;align-items:center;margin-top:.5rem}
+#dragItem{border:2px dashed var(--primary);border-radius:10px;padding:.6rem .9rem;cursor:grab;background:rgba(37,99,235,.08)}
+#dropZone{flex:1;border:2px solid var(--border);border-radius:10px;padding:.9rem;text-align:center;color:var(--muted)}
+#dropZone.over{border-color:var(--primary);background:rgba(37,99,235,.12);color:var(--text)}
+.code-out{background:#0f172a;color:#d1fae5;border-radius:10px;padding:.9rem;overflow:auto;max-height:240px;margin-top:.6rem;font-size:.85rem}
+
+/* Form: responsive form (PDF 04) */
+.contact-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:1.5rem}
+form fieldset{border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;background:var(--surface)}
+legend{padding:0 .5rem;font-weight:700}
+.form-list{list-style:none;display:grid;gap:.8rem}
+.form-list label,.form-list span{display:block;font-weight:600;margin-bottom:.25rem}
+.inline{display:inline-flex!important;gap:.35rem;align-items:center;font-weight:400!important;margin-right:.8rem}
+input[type="text"],input[type="email"],input[type="tel"],input[type="password"],select,textarea{
+  width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text)}
+input:focus,select:focus,textarea:focus{border-color:var(--primary);outline:2px solid rgba(37,99,235,.25)}
+input[type="range"]{width:100%}
+.form-err{color:#dc2626;background:#fef2f2;border:1px solid #fecaca;padding:.6rem;border-radius:10px}
+.form-ok{color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;padding:.6rem;border-radius:10px}
+.contact-aside{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;align-self:start}
+address{font-style:normal;margin:.5rem 0 1rem}
+.check{margin-left:1.1rem}
+
+/* Footer + to-top */
+.site-footer{border-top:1px solid var(--border);padding:1.2rem 0;color:var(--muted)}
+.footer-grid{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.to-top{position:fixed;right:1rem;bottom:1rem;border:1px solid var(--border);background:var(--surface);border-radius:50%;width:44px;height:44px;cursor:pointer;box-shadow:var(--shadow)}
+
+/* Modal (Auth demo) */
+.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.55);display:grid;place-items:center;padding:1rem;z-index:80}
+.modal{background:var(--surface);border-radius:var(--radius);padding:1.5rem;max-width:420px;width:100%;border:1px solid var(--border)}
+.modal label{display:block;margin:.6rem 0}
+
+/* ===== Responsive: fluid + breakpoints (PDF 04 – Fixed/Fluid/Elastic/Hybrid) ===== */
+@media (max-width:900px){
+  .hero-grid,.two-col,.media-grid,.iframe-grid,.contact-grid{grid-template-columns:1fr}
+  .cards,.lab-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:640px){
+  .main-nav{position:fixed;inset:60px 0 auto 0;background:var(--surface);flex-direction:column;padding:1rem;border-bottom:1px solid var(--border);display:none}
+  .main-nav.open{display:flex}
+  .menu-btn{display:block}
+  .cards,.lab-grid{grid-template-columns:1fr}
+  .hero-stats{flex-wrap:wrap}
+  #loginBtn{display:none}
 }
 
-button {
-    padding: 10px 20px;
-    cursor: pointer;
+/* Giảm chuyển động nếu user yêu cầu – progressive enhancement */
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto} *{animation:none!important;transition:none!important}
 }
