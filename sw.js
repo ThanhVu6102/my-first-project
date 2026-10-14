@@ -1,5 +1,5 @@
 /* Service Worker – PWA offline (PDF 02: service worker + cache) */
-const CACHE = 'myfirstweb-v1';
+const CACHE = 'myfirstweb-v2';
 const ASSETS = [
   './',
   './index.html',
