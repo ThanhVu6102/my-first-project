@@ -1,4 +1,4 @@
-/* MyFirstWeb scripts – DOM, Storage, Geolocation, Fetch, Canvas, PWA */
+/* Thanh Vu portfolio scripts – DOM, Storage, Geolocation, Fetch, Canvas, PWA */
 (function () {
   'use strict';
   const $ = (s) => document.querySelector(s);
@@ -8,7 +8,7 @@
     const n = Number(localStorage.getItem('clickCount') || 0) + 1;
     localStorage.setItem('clickCount', String(n));
     paintCount();
-    alert('Hello from my first website! Lần bấm thứ ' + n);
+    alert('Vu đã nhận lượt bấm thứ ' + n + '. Tải lại trang số vẫn giữ.');
   };
 
   /* ---- Theme dark/light (CSS variables + localStorage) ---- */
@@ -146,7 +146,7 @@
     const W = c.width, H = c.height;
     ctx.clearRect(0, 0, W, H);
     const g = ctx.createLinearGradient(0, 0, W, 0);
-    g.addColorStop(0, '#2563eb'); g.addColorStop(1, '#a855f7');
+    g.addColorStop(0, '#2B5CE6'); g.addColorStop(1, '#1E7F5C');
     ctx.fillStyle = g;
     ctx.beginPath();
     ctx.moveTo(0, H);
@@ -154,7 +154,7 @@
       ctx.lineTo(x, H / 2 + Math.sin((x + Math.random() * 20) / 40) * 50);
     }
     ctx.lineTo(W, H); ctx.closePath(); ctx.fill();
-    ctx.fillStyle = '#0f172a';
+    ctx.fillStyle = '#1A2332';
     ctx.font = 'bold 22px sans-serif';
     ctx.fillText('Canvas + JS — ' + new Date().toLocaleTimeString('vi-VN'), 16, 34);
   }

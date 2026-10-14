@@ -1,12 +1,12 @@
 {
-  "name": "MyFirstWeb — PWA Demo",
-  "short_name": "MyFirstWeb",
-  "description": "Web tĩnh demo HTML5 CSS3 JS + PWA offline. Deploy Vercel.",
+  "name": "Thanh Vu, portfolio sinh viên HTTT",
+  "short_name": "ThanhVu",
+  "description": "Portfolio của Thanh Vu, sinh viên HTTT năm 3 học DevOps. Web tĩnh và PWA offline, deploy trên Vercel.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#f8fafc",
-  "theme_color": "#2563eb",
+  "background_color": "#E8EBEF",
+  "theme_color": "#2B5CE6",
   "lang": "vi",
   "icons": [
     {
