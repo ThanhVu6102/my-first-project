@@ -124,7 +124,7 @@ legend{padding:0 .5rem;font-weight:700}
 .form-list{list-style:none;display:grid;gap:.8rem}
 .form-list label,.form-list span{display:block;font-weight:600;margin-bottom:.25rem}
 .inline{display:inline-flex!important;gap:.35rem;align-items:center;font-weight:400!important;margin-right:.8rem}
-input[type="text"],input[type="email"],input[type="tel"],input[type="password"],select,textarea{
+input[type="text"],input[type="email"],input[type="tel"],select,textarea{
   width:100%;padding:.6rem .75rem;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--text)}
 input:focus,select:focus,textarea:focus{border-color:var(--primary);outline:2px solid rgba(37,99,235,.25)}
 input[type="range"]{width:100%}
@@ -139,11 +139,6 @@ address{font-style:normal;margin:.5rem 0 1rem}
 .footer-grid{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .to-top{position:fixed;right:1rem;bottom:1rem;border:1px solid var(--border);background:var(--surface);border-radius:50%;width:44px;height:44px;cursor:pointer;box-shadow:var(--shadow)}
 
-/* Modal (Auth demo) */
-.modal-backdrop{position:fixed;inset:0;background:rgba(2,6,23,.55);display:grid;place-items:center;padding:1rem;z-index:80}
-.modal{background:var(--surface);border-radius:var(--radius);padding:1.5rem;max-width:420px;width:100%;border:1px solid var(--border)}
-.modal label{display:block;margin:.6rem 0}
-
 /* ===== Responsive: fluid + breakpoints (PDF 04 – Fixed/Fluid/Elastic/Hybrid) ===== */
 @media (max-width:900px){
   .hero-grid,.two-col,.media-grid,.iframe-grid,.contact-grid{grid-template-columns:1fr}
@@ -155,7 +150,6 @@ address{font-style:normal;margin:.5rem 0 1rem}
   .menu-btn{display:block}
   .cards,.lab-grid{grid-template-columns:1fr}
   .hero-stats{flex-wrap:wrap}
-  #loginBtn{display:none}
 }
 
 /* Giảm chuyển động nếu user yêu cầu – progressive enhancement */

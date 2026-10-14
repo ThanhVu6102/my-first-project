@@ -161,34 +161,6 @@
   drawCanvas();
   $('#drawBtn')?.addEventListener('click', drawCanvas);
 
-  /* ---- Auth mock (PDF 02 – Authentication, sessionStorage state) ---- */
-  const modal = $('#loginModal');
-  const loginState = $('#loginState');
-  const loginBtn = $('#loginBtn');
-  loginBtn?.addEventListener('click', () => {
-    if (sessionStorage.getItem('user')) { sessionStorage.clear(); paintLogin(); }
-    else if (modal) modal.hidden = false;
-  });
-  $('#loginClose')?.addEventListener('click', () => { modal.hidden = true; });
-  modal?.addEventListener('click', (e) => { if (e.target === modal) modal.hidden = true; });
-  $('#loginForm')?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const em = $('#lEmail').value.trim(), pw = $('#lPass').value;
-    const err = $('#loginErr'); err.hidden = true;
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { err.textContent = 'Email chưa hợp lệ.'; err.hidden = false; return; }
-    if (pw.length < 4) { err.textContent = 'Mật khẩu ≥ 4 ký tự.'; err.hidden = false; return; }
-    sessionStorage.setItem('token', btoa(em + ':' + Date.now()));
-    sessionStorage.setItem('user', em);
-    modal.hidden = true;
-    paintLogin();
-  });
-  paintLogin();
-  function paintLogin() {
-    const u = sessionStorage.getItem('user');
-    if (loginBtn) loginBtn.textContent = u ? '👤 ' + u.split('@')[0] + ' (thoát)' : 'Đăng nhập';
-    if (loginState) loginState.textContent = u ? 'Đã đăng nhập: ' + u + ' (token trong sessionStorage)' : 'Chưa đăng nhập.';
-  }
-
   /* ---- PWA: register Service Worker (PDF 02 – manifest + SW + HTTPS) ---- */
   if ('serviceWorker' in navigator && (location.protocol.startsWith('http') || location.protocol === 'https:')) {
     window.addEventListener('load', () => {
