@@ -150,6 +150,17 @@ address{font-style:normal;margin:.5rem 0 1rem}
 .footer-grid{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap}
 .to-top{position:fixed;right:1rem;bottom:1rem;border:2px solid var(--ink);background:var(--panel);width:44px;height:44px;cursor:pointer}
 
+/* Homework PDF 01 — status pill encodes state, flat ledger style */
+.hw-grid{margin-top:1.6rem}
+.hw-check{list-style:none;margin:.6rem 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:.35rem 1.2rem}
+.hw-check li{display:flex;gap:.5rem;align-items:baseline}
+.st-ok,.st-wip{display:inline-block;font-size:.8rem;font-weight:700;border:2px solid var(--ink);padding:0 .45rem;white-space:nowrap}
+.st-ok{background:var(--moss);color:#fff}
+.st-wip{background:var(--surface);color:var(--amber);border-color:var(--amber)}
+.hw-label{display:block;font-weight:600;margin:.7rem 0 .3rem;font-size:.92rem}
+#hw4Url{flex:1;min-width:12rem}
+#hw4Out{margin-top:.6rem}
+
 @media (max-width:900px){
   .hero-grid,.two-col,.media-grid,.iframe-grid,.contact-grid{grid-template-columns:1fr}
   .cards{grid-template-columns:1fr;border-width:2px}
@@ -158,6 +169,7 @@ address{font-style:normal;margin:.5rem 0 1rem}
   .lab-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:640px){
+  .hw-check{grid-template-columns:1fr}
   .main-nav{position:fixed;inset:60px 0 auto 0;background:var(--paper);flex-direction:column;padding:1rem;border-bottom:2px solid var(--ink);display:none}
   .main-nav.open{display:flex}
   .menu-btn{display:block}

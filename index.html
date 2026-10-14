@@ -29,6 +29,7 @@
         <a href="#pricing" class="nav-link">Học vấn</a>
         <a href="#media" class="nav-link">Demo</a>
         <a href="#lab" class="nav-link">Lab HTML5</a>
+        <a href="#homework" class="nav-link">Bài tập</a>
         <a href="#contact" class="nav-link nav-cta">Liên hệ</a>
       </nav>
       <div class="header-actions">
@@ -256,6 +257,60 @@ $ vercel deploy
               <span id="fetchStatus" class="muted small" role="status"></span>
             </div>
             <pre id="fetchOut" class="code-out">Chưa gọi API</pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOMEWORK: 4 bài tập trong PDF 01, trang này là bài số 2 -->
+    <section id="homework" class="section">
+      <div class="container">
+        <p class="kicker"><span class="dot" aria-hidden="true"></span> Đối chiếu từng homework trong PDF 01 <code>pdf 01 trang 16</code></p>
+        <h2>Bài tập của Vu theo PDF 01</h2>
+        <p class="muted">PDF 01 giao 4 homework. Trang portfolio này chính là bài số 2. Ba bài còn lại liệt kê bên dưới kèm trạng thái và cách kiểm tra.</p>
+        <div class="cards hw-grid">
+          <article class="card wide">
+            <h3>Bài 1, dựng môi trường phát triển</h3>
+            <p>Trạng thái: <strong class="st-ok">xong cơ bản</strong>, còn MySQL và MongoDB đang học. Danh sách đối chiếu PDF 01 trang 4 tới 14:</p>
+            <ul class="hw-check">
+              <li><span class="st-ok">xong</span> VS Code, editor chính</li>
+              <li><span class="st-ok">xong</span> Git và GitHub, repo ở footer</li>
+              <li><span class="st-ok">xong</span> Node.js, chạy được npm và npx</li>
+              <li><span class="st-ok">xong</span> Chrome, trình duyệt kiểm tra chính</li>
+              <li><span class="st-ok">xong</span> Postman, dùng test API ở Lab và bài 4</li>
+              <li><span class="st-wip">đang học</span> MySQL server và Workbench</li>
+              <li><span class="st-wip">đang học</span> MongoDB Atlas và Compass</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Bài 2, web tĩnh đầu tay trên Vercel</h3>
+            <p>Trạng thái: <strong class="st-ok">đã nộp</strong>. Chính là trang bạn đang xem.</p>
+            <ul>
+              <li>HTML5 semantic, CSS3 responsive, JS thuần</li>
+              <li>PWA offline, manifest và service worker</li>
+              <li>Phần Lab và Demo giữ đủ tính năng PDF 02 tới 04</li>
+            </ul>
+            <p><a class="text-link" href="./">Mở lại trang này</a></p>
+          </article>
+          <article class="card">
+            <h3>Bài 3, Hello World React trên Vercel</h3>
+            <p>Trạng thái: <strong class="st-wip">chưa deploy</strong>. Khi xong Vu sẽ dán link vào đây.</p>
+            <ul>
+              <li>Dự kiến: tạo app bằng Vite, trang Hello World gọi tên Vu</li>
+              <li>Deploy Vercel chung tài khoản với bài 2</li>
+            </ul>
+            <p class="muted small">Link demo: <span id="hw3Link">chờ cập nhật sau khi deploy</span></p>
+          </article>
+          <article class="card">
+            <h3>Bài 4, API Hello World trên Render</h3>
+            <p>Trạng thái: <strong class="st-wip">đang làm</strong>. Dự kiến Node.js và Express, một route chào Hello World.</p>
+            <label class="hw-label" for="hw4Url">Dán endpoint GET đầy đủ của Render rồi bấm gọi thử</label>
+            <div class="row">
+              <input type="url" id="hw4Url" inputmode="url" placeholder="https://ten-api.onrender.com/api/hello" />
+              <button class="btn btn-small btn-primary" id="hw4Btn" type="button">Gọi thử API</button>
+            </div>
+            <p class="muted small" id="hw4Status" role="status">Chưa gọi. Trình duyệt nhớ link đã dán.</p>
+            <pre id="hw4Out" class="code-out">Trống</pre>
           </article>
         </div>
       </div>

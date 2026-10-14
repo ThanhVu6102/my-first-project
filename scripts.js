@@ -138,6 +138,32 @@
     }
   });
 
+  /* ---- Homework 4 (PDF 01): test Render API endpoint, nhớ URL đã dán ---- */
+  const hw4Url = $('#hw4Url'), hw4Btn = $('#hw4Btn');
+  if (hw4Url) hw4Url.value = localStorage.getItem('hw4_url') || '';
+  hw4Btn?.addEventListener('click', async () => {
+    const out = $('#hw4Out'), st = $('#hw4Status');
+    const url = (hw4Url.value || '').trim();
+    if (!/^https?:\/\/.+\..+/.test(url)) {
+      st.textContent = 'Link chưa đúng. Dán endpoint GET đầy đủ, bắt đầu bằng http.';
+      return;
+    }
+    localStorage.setItem('hw4_url', url);
+    st.textContent = 'Đang gọi API của Vu trên Render.';
+    out.textContent = 'Đang chờ phản hồi.';
+    try {
+      const res = await fetch(url);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const text = await res.text();
+      try { out.textContent = JSON.stringify(JSON.parse(text), null, 2); }
+      catch { out.textContent = text; }
+      st.textContent = 'Gọi xong lúc ' + new Date().toLocaleTimeString('vi-VN') + '.';
+    } catch (err) {
+      st.textContent = 'Chưa gọi được. Kiểm tra Render đã chạy, route có cho CORS và link dán đúng.';
+      out.textContent = 'Chi tiết lỗi: ' + err.message;
+    }
+  });
+
   /* ---- Canvas demo (PDF 03) ---- */
   function drawCanvas() {
     const c = $('#demoCanvas');
